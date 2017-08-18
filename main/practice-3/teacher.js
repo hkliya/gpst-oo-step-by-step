@@ -20,10 +20,10 @@ module.exports = class Teacher extends Person {
   }
 
   notifyStudentAppended(msg) {
-    return `I am Tom. I know ${msg}.`
+    return `I am ${this.name}. I know ${msg}.`
   }
 
   notifyLeaderAssigned(msg) {
-    return `I am Tom. I know ${msg}.`
+    return `I am ${this.name}. I know ${msg}.`
   }
 }
