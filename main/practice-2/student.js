@@ -1,17 +1,17 @@
 const Person = require('./person');
 
-const Student = function(name, age, clazz) {
+const Student = function(name, age, klass) {
   Person.call(this, name, age);
-  this.clazz = clazz;
+  this.klass = klass;
 }
 
 Student.prototype = new Person();
 
 Student.prototype.introduce = function() {
-  let clazzMessage = `I am at Class ${this.clazz.number}.`;
-  if (this.clazz.leader === this) {
-    clazzMessage = `I am Leader of Class 2.`;
+  let classMessage = `I am at Class ${this.klass.number}.`;
+  if (this.klass.leader === this) {
+    classMessage = `I am Leader of Class 2.`;
   }
-  return `${Person.prototype.introduce.call(this)} I am a Student. ${clazzMessage}`
+  return `${Person.prototype.introduce.call(this)} I am a Student. ${classMessage}`
 }
 module.exports = Student;
