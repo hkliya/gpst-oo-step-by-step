@@ -22,29 +22,26 @@ describe("Person", () => {
 
 describe("Student", () => {
   it("should have field name, age and class", () => {
-    let clazz = new Class(2);
-    let student = new Student("Tom", 21, clazz);
+    let klass = new Class(2);
+    let student = new Student("Tom", 21, klass);
     expect(student.name).toBe("Tom");
     expect(student.age).toBe(21);
-    expect(student.clazz).toBe(clazz);
+    expect(student.klass).toBe(klass);
 
   });
 
   it("should overwrite Person introduce, introduce student with class", () => {
     let clazz = new Class(2);
     let student = new Student("Tom", 21, clazz);
-    clazz.appendMember(student);
     let introduce = student.introduce();
 
     expect(introduce).toBe("My name is Tom. I am 21 years old. I am a Student. I am at Class 2.");
 
   });
 
-  it("should introduce there is not class assigned to this student, when this studen d" +
-      "oesn't append to this class",
+  it("should introduce there is no class assigned to this student, when this student doesn't append to this class",
   () => {
-    let clazz = new Class(2);
-    let student = new Student("Tom", 21, clazz);
+    let student = new Student("Tom", 21);
     let introduce = student.introduce();
 
     expect(introduce).toBe("My name is Tom. I am 21 years old. I am a Student. I haven't been allowed to joi" +
@@ -75,7 +72,7 @@ describe("Teacher", () => {
     let teacher = new Teacher("Joun", 21, [clazz1, clazz2]);
     expect(teacher.name).toBe("Joun");
     expect(teacher.age).toBe(21);
-    expect(teacher.clazzes).toEqual([clazz1, clazz2]);
+    expect(teacher.classes).toEqual([clazz1, clazz2]);
   });
 
   it("should overwrite Person introduce and show all classes this teacher teaches, whe" +
