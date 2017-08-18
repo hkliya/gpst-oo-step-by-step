@@ -10,7 +10,8 @@ module.exports = class Teacher extends Person {
   introduce() {
     let teachClassInfo = 'No Class';
     if (this.classes.length > 0) {
-      teachClassInfo = `Class ${this.classes.map(c => c.number).join(',')}`
+      let classNumbers = this.classes.map(c => c.number).join(',');
+      teachClassInfo = `Class ${classNumbers}`;
     }
     return `${super.introduce()} I am a Teacher. I teach ${teachClassInfo}.`;
   }

@@ -3,25 +3,22 @@ module.exports = class Class {
   constructor(number) {
     this.number = number;
     this.students = [];
+    this.teachers = [];
   }
 
   appendMember(student) {
     this.students.push(student);
-    if (this.teacher) {
-      this.teacher.notifyStudentAppended(`${student.name} has joined Class ${this.number}`);
-    }
+    this.notify('StudentAppended', `${student.name} has joined Class ${this.number}`);
   }
 
   assignTeacher(teacher) {
-    this.teacher = teacher;
+    this.teachers.push(teacher);
   }
 
   assignLeader(student) {
     if (this.hasStudent(student)) {
       this.leader = student;
-      if (this.teacher) {
-        this.teacher.notifyLeaderAssigned(`${student.name} become Leader of Class ${this.number}`);
-      }
+      this.notify('LeaderAssigned', `${student.name} become Leader of Class ${this.number}`);
       return 'Assign team leader successfully.';
     }
 
@@ -30,5 +27,9 @@ module.exports = class Class {
 
   hasStudent(student) {
     return this.students.includes(student);
+  }
+
+  notify(event, msg) {
+    this.teachers.forEach(t => t[`notify${event}`].call(this, msg));
   }
 }
